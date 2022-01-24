@@ -5,6 +5,7 @@
 # Assignment: Homework 1
 
 # Standard Library Imports
+from random import randint
 
 # Third-party Library Imports
 
@@ -12,11 +13,22 @@
 
 class hw1:
     """
-        Part 1: The program displays a number between 1 and 10, inclusively.
-        Part 2: The program displays "Players Stand".
+        Part 1: High/Low Minigame -- guess if the next number is higher or lower than the current number.
+        Part 2: Musical Chairs -- A silly mini-game with a decreasing number of chairs.  Last one standing wins.
     """
     def __init__(self):
-        self.players = 0
+        self.__players = {}
         self.parts = 2
 
+    def start(self):
+        return
 
+    def high_low(self):
+        print(f"Welcome to the High/Low Guessing game!\n")
+
+    def get_players(self):
+        print(f"There are currently {len(self.__players)} players.")
+        if len(self.__players) is None:
+            print("How many players are playing this game? ")
+        else:
+            print(f"Would you like to add more? Y/n ")
