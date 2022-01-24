@@ -14,9 +14,8 @@ class core:
     def __init__(self, incpath: Path):
         self.__path = incpath if not None else Path.cwd()
         self.assignments = {}
-        self.__get_assignments()
 
-    def __get_assignments(self):
+    def get_assignments(self):
         # TODO: test if path returns current level of directory or top level
         # TODO: We need to go into the assignments directory -- syntax with a windows filepath is:
         #       filelist = os.listdir(self.path / "assignments") or "core/assignments" if from top level
@@ -27,8 +26,12 @@ class core:
         elif os.path.exists(self.__path / "assignments"):
             filelist = os.listdir(self.__path / "assignments")
         else:
-            # TODO: log and raise error
-            filelist = None
+            # TODO: log error
+            raise FileNotFoundError
+
+        # Filelist verification -- if there are no files from the scrape, raise an exception, but don't exit
+        if len(filelist) <= 0:
+            raise NotImplementedError
 
         for f in filelist:
             # For each file in assignments, add the file name and object as a key:value pair via __create_obj()

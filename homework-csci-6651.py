@@ -23,23 +23,42 @@ def cls():
     _ = call('clear' if name == 'posix' else 'cls')
 
 
-def main():
+def load_assignments(exercises):
     try:
-        exercises = core(Path.cwd())
+        ex = exercises.get_assignments()
+        loaded = len(exercises.assignments)
+    except FileNotFoundError:
+        print(f"Folder structure is missing.  Please verify the location of the assignments folder \n"
+              f"Example: ../homework-csci-6651/core/assignments/[assignments.py]")
+        sys.exit(2)
+    except NotImplementedError:
+        print(f"No assignments found in assignments folder.  Continuing...")
+        loaded = 0
     except Exception as err:
         print(f"Error loading Assignments: {err}")
-        sys.exit()
+        sys.exit(3)
+    else:
+        return 0, None
 
-    loaded = len(exercises.assignments)
+    return loaded, ex
 
-    while(True):
-        cls()
-        print(f"Welcome to Brandon Frostbourne's Homework Program"
-              f"\n\n This program is designed to encapsulate every homework assignment for CSCI-6651 at the \n"
-              f"University of New Haven -- taught by George Pillar III.\n\n")
-        print(f"There are currently {loaded} assignments loaded.  Please make a selection below:\n")
 
-    return
+def main():
+    loaded, exercises = load_assignments(core(Path.cwd()))
+    if exercises is not None:
+        while(True):
+            cls()
+            print(f"Welcome to Brandon Frostbourne's Homework Program"
+                  f"\n\n This program is designed to encapsulate every homework assignment for CSCI-6651 at the \n"
+                  f"University of New Haven -- taught by George Pillar III.\n\n")
+            print(f"There are currently {loaded} assignments loaded.  Please make a selection below:\n")
+            print(f"\n\n"
+                  f"1) Reload Assignments. \n"
+                  f"2) Print Information about the Author.")
+
+            for keys, values in exercises.assignments:
+                print(f"{keys + 3}) Assignment: {values}")
+    return 0
 
 
 if __name__ == "__main__":
