@@ -104,10 +104,8 @@ class hw1:
 
         order = []
         print("Players Stand")
-        sleep(randint(5,20))
-        input("Players Sit (input your name): ")
-        for x in range(len(self.__players.keys())):
-            order.append(input(""))
+        while sleep(randint(5, 20)):
+            order.append(input("Players Sit (input your name): "))
 
         print(f"{order.pop()} missed the chair!")
 
