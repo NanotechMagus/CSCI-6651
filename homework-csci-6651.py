@@ -1,4 +1,4 @@
-#!/etc/python
+#!/etc/python-3.9
 
 '''
     This code was authored by Brandon Frostbourne
@@ -30,22 +30,21 @@ def load_assignments(exercises):
     except FileNotFoundError:
         print(f"Folder structure is missing.  Please verify the location of the assignments folder \n"
               f"Example: ../homework-csci-6651/core/assignments/[assignments.py]")
-        sys.exit(2)
+        loaded, ex = -1, None
     except NotImplementedError:
         print(f"No assignments found in assignments folder.  Continuing...")
-        loaded = 0
+        loaded, ex = 0, None
     except Exception as err:
         print(f"Error loading Assignments: {err}")
-        sys.exit(3)
-    else:
-        return 0, None
-
-    return loaded, ex
+        loaded, ex = -1, None
+    finally:
+        return loaded, ex
 
 
 def main():
     loaded, exercises = load_assignments(core(Path.cwd()))
-    if exercises is not None:
+
+    if exercises:
         while(True):
             cls()
             print(f"Welcome to Brandon Frostbourne's Homework Program"
