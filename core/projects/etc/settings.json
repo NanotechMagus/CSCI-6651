@@ -1,0 +1,42 @@
+{
+  "loc": {
+    "banner": "./img/LOGO-F.png",
+    "outfile": "",
+    "tokenfile": "",
+    "startloc": "C:\\Users\\",
+    "logfile": "",
+    "logging": "False",
+    "logstate": "logging.INFO",
+    "newfolder": ""
+  },
+  "txt": {
+    "WindowTitle": "UNH Scripting w/Python",
+    "boxfpv": "Select File",
+    "tknfpv": "Select Encryption Token",
+    "pathtext": "Path/to/Text/File",
+    "tknpath": "Path/to/Encryption/Token",
+    "logchk": "Save a logfile to the same directory as the text file? (filename.log)",
+    "dbgchk": "Debug Mode",
+    "author": "Brandon Frostbourne",
+    "copyright": "Copyright: \u00a9 2022",
+    "tkncreate": "Create Token",
+    "create": "Create New File",
+    "createtkn": "Create New Token",
+    "disp_all": "Display contents of File",
+    "disp_asc": "Display contents: Ascending",
+    "disp_dec": "Display contents: Descending ",
+    "search": "Search",
+    "largest": "Largest Number",
+    "append": "Add a number",
+    "encrypt": "Encrypt File",
+    "decrypt": "Decrypt File",
+    "exit": "Quit Program"
+  },
+  "css": {
+            "nbutton": "background-color : #457B9D",
+            "exit": "",
+            "crypt": "",
+            "ncreate": "",
+            "change": ""
+        }
+}
